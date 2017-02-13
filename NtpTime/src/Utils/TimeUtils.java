@@ -13,5 +13,8 @@ public class TimeUtils {
 		
 		SimpleDateFormat sdf=new SimpleDateFormat(DEFAULT_DATETIME_PATTERN);
 		System.out.println(sdf.format(new Date()));
+		
+		System.out.println(new Date().toGMTString());
+		System.out.println(new Date().toLocaleString());
 	}
 }
