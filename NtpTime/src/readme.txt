@@ -1,0 +1,1 @@
+url=https://github.com/38608338/NtpTime
