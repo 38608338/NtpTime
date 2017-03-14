@@ -2,8 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="leolibs/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="leolibs/classes12.jar"/>
 	<classpathentry kind="lib" path="leolibs/mysql-connector-java-5.0.8.jar"/>
+	<classpathentry kind="lib" path="leolibs/spring-jdbc-3.2.18.RELEASE.jar"/>
+	<classpathentry kind="lib" path="leolibs/spring-tx-3.2.18.RELEASE.jar"/>
+	<classpathentry kind="lib" path="leolibs/spring-core-3.2.18.RELEASE.jar"/>
+	<classpathentry kind="lib" path="leolibs/commons-logging.jar"/>
+	<classpathentry kind="lib" path="leolibs/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="leolibs/spring-beans-3.2.18.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

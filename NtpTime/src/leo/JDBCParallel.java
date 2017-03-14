@@ -7,8 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+
+import javax.sql.DataSource;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class JDBCParallel {
 	ThreadLocal<Integer> counter =new ThreadLocal<Integer>(){
@@ -98,6 +103,41 @@ public class JDBCParallel {
 		return true;
 	}
 	
+	public synchronized boolean isWQKzt(String nsrsbh) {
+		counter.set(counter.get() +1);
+		System.out.println(Thread.currentThread().getName()+"@"+"第"+counter.get()+"次调用");
+		try {
+			DriverManagerDataSource dataSource = new DriverManagerDataSource(); 
+			dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+			dataSource.setUrl("jdbc:mysql://localhost:3306/test");
+			dataSource.setUsername("root");
+			dataSource.setPassword("root");
+			
+			//java.lang.NoClassDefFoundError: org/springframework/jdbc/core/JdbcTemplate //添加spring-beans-3.2.18.RELEASE.jar解决
+			JdbcTemplate template=new JdbcTemplate(dataSource);
+			//Communications link failure due to underlying exception: ** BEGIN NESTED EXCEPTION ** 
+			//MESSAGE: Permission denied: connect
+			//使用同步方法解决
+			
+			String sql = "select fxsj from fx_qy_nsrxx where nsrsbh='"+nsrsbh+"'";
+			String fxsj= template.queryForObject(sql, String.class);
+			String nowTime = new SimpleDateFormat("yyyy-MM").format(new Date());
+			if (fxsj !=null && fxsj.equals(nowTime)) {
+				System.out.println(Thread.currentThread().getName()+"@"+"时间比对结果一致，为新发行户，不需要抄报税");
+				return false;
+			}
+			
+			sql = "select nsrsbh from cb_qy_bsqk_tjb where nsrsbh = '"+nsrsbh+"'";
+			String nsrsbhx= template.queryForObject(sql, String.class);
+			if (nsrsbhx !=null && nsrsbhx.equals(nsrsbh)) {
+				System.out.println(Thread.currentThread().getName()+"@"+"纳税人已完税");
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public static void main(String[] args) {
 		JDBCParallel t=new JDBCParallel();
 		for (int i = 0; i < 1000; i++) {//Data source rejected establishment of connection,  message from server: "Too many connections"
@@ -117,7 +157,8 @@ public class JDBCParallel {
 		public void run() {
 			while (true) {
 				//synchronized (this) {//加在此处依然"Too many connections"
-					boolean result = dnc.isWcbszt("110105750119422");
+					//boolean result = dnc.isWcbszt("110105750119422");
+					boolean result = dnc.isWQKzt("110105750119422");
 					System.out.println(Thread.currentThread().getName()+"@"+ result);
 				//}
 				/*try {
