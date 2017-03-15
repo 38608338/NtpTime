@@ -16,6 +16,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class JDBCParallel {
+	static JDBCParallel instance;
+	
+	private JDBCParallel(){
+	}
+	
+	public static synchronized JDBCParallel getInstance(){
+		if (instance ==null) {
+			instance=new JDBCParallel();
+		}
+		return instance;
+	}
+	
 	ThreadLocal<Integer> counter =new ThreadLocal<Integer>(){
 		public Integer initialValue() {  
             return 0;  
@@ -138,11 +150,19 @@ public class JDBCParallel {
 		}
 		return false;
 	}
+	
 	public static void main(String[] args) {
 		JDBCParallel t=new JDBCParallel();
 		for (int i = 0; i < 1000; i++) {//Data source rejected establishment of connection,  message from server: "Too many connections"
 			//for (int i = 0; i < 100; i++) {
-			new Thread(t.new MyThread(t)).start();
+			//new Thread(t.new MyThread(t)).start();
+			
+			//Communications link failure due to underlying exception:
+			//MESSAGE: Permission denied: connect
+			//Last packet sent to the server was 1 ms ago.
+			//new Thread(t.new MyThread(new JDBCParallel())).start();
+			
+			new Thread(t.new MyThread(JDBCParallel.getInstance())).start();
 		}
 	}
 
