@@ -177,8 +177,8 @@ public class JDBCParallel {
 					//取数据库返回结果
 					Object obj = rs.getObject(1);
 					//发行时间与系统时间比对
+					System.out.println(Thread.currentThread().getName()+"#goood1@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +obj.toString()+"--"+nowTime);
 					if (obj !=null && obj.toString().equals(nowTime)) {
-						System.out.println(Thread.currentThread().getName()+"@"+"时间比对结果一致，为新发行户，不需要抄报税");
 						return false;
 					}
 				}
@@ -190,7 +190,7 @@ public class JDBCParallel {
 					sql = "select nsrsbh from cb_qy_bsqk_tjb where nsrsbh = '"+nsrsbh+"'";
 					rs = stmt.executeQuery(sql);
 					if (rs.next()) {
-						System.out.println(Thread.currentThread().getName()+"@"+"纳税人已完税");
+						System.out.println(Thread.currentThread().getName()+"#goood1@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +"纳税人已完税");
 						//Object obj1 = rs.getObject(1);
 						return false;
 					}
@@ -204,21 +204,18 @@ public class JDBCParallel {
 	            try {
 	            	if (rs !=null) {
 	            		rs.close();
-	            		System.out.println(Thread.currentThread().getName()+"@"+"rs closed");
 					}
 	            } catch (Exception e) {
 	            }
 	            try {
 	                if (stmt !=null) {
 	                	stmt.close();
-	            		System.out.println(Thread.currentThread().getName()+"@"+"stmt closed");
 					}
 	            } catch (Exception e) {
 	            }
 	            try {
 	            	if (conn !=null) {
 	    				conn.close();
-	            		System.out.println(Thread.currentThread().getName()+"@"+"conn closed");
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -254,8 +251,8 @@ public class JDBCParallel {
 				//取数据库返回结果
 				Object obj = rs.getObject(1);
 				//发行时间与系统时间比对
+				System.out.println(Thread.currentThread().getName()+"#goood2@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +obj.toString()+"--"+nowTime);
 				if (obj !=null && obj.toString().equals(nowTime)) {
-					System.out.println(Thread.currentThread().getName()+"@"+"时间比对结果一致，为新发行户，不需要抄报税");
 					return false;
 				}
 			}
@@ -267,7 +264,7 @@ public class JDBCParallel {
 				sql = "select nsrsbh from cb_qy_bsqk_tjb where nsrsbh = '"+nsrsbh+"'";
 				rs = stmt.executeQuery(sql);
 				if (rs.next()) {
-					System.out.println(Thread.currentThread().getName()+"@"+"纳税人已完税");
+					System.out.println(Thread.currentThread().getName()+"#goood2@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +"纳税人已完税");
 					//Object obj1 = rs.getObject(1);
 					return false;
 				}
@@ -281,21 +278,18 @@ public class JDBCParallel {
             try {
             	if (rs !=null) {
             		rs.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"rs closed");
 				}
             } catch (Exception e) {
             }
             try {
                 if (stmt !=null) {
                 	stmt.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"stmt closed");
 				}
             } catch (Exception e) {
             }
             try {
             	if (conn !=null) {
     				conn.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"conn closed");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -330,8 +324,8 @@ public class JDBCParallel {
 				//取数据库返回结果
 				Object obj = rs.getObject(1);
 				//发行时间与系统时间比对
+				System.out.println(Thread.currentThread().getName()+"#goood3@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +obj.toString()+"--"+nowTime);
 				if (obj !=null && obj.toString().equals(nowTime)) {
-					System.out.println(Thread.currentThread().getName()+"@"+"时间比对结果一致，为新发行户，不需要抄报税");
 					return false;
 				}
 			}
@@ -343,7 +337,7 @@ public class JDBCParallel {
 				sql = "select nsrsbh from cb_qy_bsqk_tjb where nsrsbh = '"+nsrsbh+"'";
 				rs = stmt.executeQuery(sql);
 				if (rs.next()) {
-					System.out.println(Thread.currentThread().getName()+"@"+"纳税人已完税");
+					System.out.println(Thread.currentThread().getName()+"#goood3@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +"纳税人已完税");
 					//Object obj1 = rs.getObject(1);
 					return false;
 				}
@@ -357,21 +351,18 @@ public class JDBCParallel {
             try {
             	if (rs !=null) {
             		rs.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"rs closed");
 				}
             } catch (Exception e) {
             }
             try {
                 if (stmt !=null) {
                 	stmt.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"stmt closed");
 				}
             } catch (Exception e) {
             }
             try {
             	if (conn !=null) {
     				conn.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"conn closed");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -406,8 +397,8 @@ public class JDBCParallel {
 				//取数据库返回结果
 				Object obj = rs.getObject(1);
 				//发行时间与系统时间比对
+				System.out.println(Thread.currentThread().getName()+"#goood4@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +obj.toString()+"--"+nowTime);
 				if (obj !=null && obj.toString().equals(nowTime)) {
-					System.out.println(Thread.currentThread().getName()+"@"+"时间比对结果一致，为新发行户，不需要抄报税");
 					return false;
 				}
 			}
@@ -419,7 +410,7 @@ public class JDBCParallel {
 				sql = "select nsrsbh from cb_qy_bsqk_tjb where nsrsbh = '"+nsrsbh+"'";
 				rs = stmt.executeQuery(sql);
 				if (rs.next()) {
-					System.out.println(Thread.currentThread().getName()+"@"+"纳税人已完税");
+					System.out.println(Thread.currentThread().getName()+"#goood4@"+new SimpleDateFormat("HH:mm:ss SSS  ").format(new Date()) +"纳税人已完税");
 					//Object obj1 = rs.getObject(1);
 					return false;
 				}
@@ -433,21 +424,18 @@ public class JDBCParallel {
             try {
             	if (rs !=null) {
             		rs.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"rs closed");
 				}
             } catch (Exception e) {
             }
             try {
                 if (stmt !=null) {
                 	stmt.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"stmt closed");
 				}
             } catch (Exception e) {
             }
             try {
             	if (conn !=null) {
     				conn.close();
-            		System.out.println(Thread.currentThread().getName()+"@"+"conn closed");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -459,7 +447,7 @@ public class JDBCParallel {
 	
 	public static void main(String[] args) {
 		JDBCParallel t=new JDBCParallel();
-		for (int i = 0; i < 1000; i++) {//Data source rejected establishment of connection,  message from server: "Too many connections"
+		for (int i = 0; i < 10; i++) {//Data source rejected establishment of connection,  message from server: "Too many connections"
 			//for (int i = 0; i < 100; i++) {
 			//new Thread(t.new MyThread(t)).start();s
 			
@@ -483,9 +471,9 @@ public class JDBCParallel {
 		public void run() {
 			while (true) {
 				//synchronized (this) {//加在此处依然"Too many connections"
-				boolean result = dnc.isWcbszt("110105750119422");
+				//boolean result = dnc.isWcbszt("110105750119422");
 					//boolean result = dnc.isWQKzt("110105750119422");
-					result = dnc.goood("110105750119422");
+				boolean result = dnc.goood("110105750119422");
 					result = dnc.goood2("110105750119422");
 					result = dnc.goood3("110105750119422");
 					result = dnc.goood4("110105750119422");
