@@ -12,7 +12,8 @@ public class MemCachedTest {
 		MemcachedClient client=new MemcachedClient(new InetSocketAddress("127.0.0.1", 11211),
 				new InetSocketAddress("127.0.0.1", 11212),
 				new InetSocketAddress("127.0.0.1", 11213),
-				new InetSocketAddress("127.0.0.1", 11214)); 
+				new InetSocketAddress("127.0.0.1", 11214),
+				new InetSocketAddress("127.0.0.1", 11215)); 
 
         client.set("abcderghijklmnopqrstuvwxyzABCDERGHIJKLMNOPQRSTUVWXYZ", 3600, "英文测试通过");
         client.set("1234567890", 3600, "数字测试通过");
@@ -37,7 +38,7 @@ public class MemCachedTest {
 				}
 			}
 		}
-        
+        client.flush();
         System.exit(0);
 	}
 }
