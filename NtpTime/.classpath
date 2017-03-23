@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="leolibs/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="leolibs/spring-beans-3.2.18.RELEASE.jar"/>
 	<classpathentry kind="lib" path="leolibs/memcached-2.6.jar"/>
+	<classpathentry kind="lib" path="leolibs/jedis-2.4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
