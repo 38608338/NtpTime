@@ -12,5 +12,7 @@
 	<classpathentry kind="lib" path="leolibs/spring-beans-3.2.18.RELEASE.jar"/>
 	<classpathentry kind="lib" path="leolibs/memcached-2.6.jar"/>
 	<classpathentry kind="lib" path="leolibs/jedis-2.4.1.jar"/>
+	<classpathentry kind="lib" path="leolibs/core-3.1.0.jar"/>
+	<classpathentry kind="lib" path="leolibs/zxing-javase-3.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
